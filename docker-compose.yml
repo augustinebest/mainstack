@@ -1,0 +1,22 @@
+version: '3.8'
+services:
+  dev_db:
+    image: mongo:latest
+    ports:
+      - 27017:27017
+    volumes:
+      - mongodb_data_container:/data/db
+  app:
+    ports:
+      - '8900:8900'
+    build: .
+    env_file:
+      - .env
+    environment:
+      - DATABASE_URL=mongodb://dev_db:27017/mainstack
+      - PORT=8900
+    depends_on:
+      - dev_db
+
+volumes:
+  mongodb_data_container:
