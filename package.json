@@ -4,7 +4,6 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "preinstall": "npm install tsc",
     "start": "npm run build && node dist/index.js",
     "postinstall": "tsc",
     "tsc": "tsc",
